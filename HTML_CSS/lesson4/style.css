@@ -1,0 +1,23 @@
+.header{ height:30px; width:100%;
+         background-color:red;
+}
+
+.top{ height:100px; width:100%;
+      background-color:orange;
+ }
+
+.main{ height:100px width:100%;
+       display:flex;
+       justify-content:center;
+}
+
+.main1{ height:600px; width:200px;
+        background-color:lightgreen;
+}
+
+.main2{ height:600px; width:400px;
+        background-color:green;
+}
+
+.footer{ height:30px; width:100%;
+         background-color:blue;}
