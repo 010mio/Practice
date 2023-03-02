@@ -1,4 +1,4 @@
-class RelationshipsController < ApplicationController
+class RelationshipController < ApplicationController
   # フォローするとき
   def create
     current_user.follow(params[:user_id])
@@ -19,4 +19,6 @@ class RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
     @users = user.followers
   end
+
+
 end

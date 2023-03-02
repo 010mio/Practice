@@ -1,11 +1,15 @@
 <!--ユーザー情報-->
-    <h3>User info</h3>
+    <h2>User info</h2>
     <%= image_tag user.get_profile_image(100,100) %>
     <p class="border-top">name　&emsp;&emsp;<%= user.name %></p>
     <p class="border-top">introduction　&emsp;&emsp;<%= user.introduction %></p>
+    <p class="border-top">follows &emsp;&emsp;<%= user.followings.count %></p>
+    <p class="border-top">followers &emsp;&emsp;<%= user.followers.count %></p>
 
+
+  <% if user == current_user %>
     <%= link_to edit_user_path(user) do %>
-    <button type="button" class="btn btn-outline-secondary btn-block">
-    <i class="fas fa-user-cog"></i></button>
+     <button type="button" class="btn btn-outline-secondary btn-block">
+     <i class="fas fa-user-cog"></i></button>
     <%end%>
-    
+  <%end%>

@@ -13,7 +13,9 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
-#バリデーション
+
+  has_one_attached :profile_image
+  
   validates :name, uniqueness: true
   validates :name, length: { minimum: 2 }
   validates :name, length: { maximum: 20 }
@@ -26,5 +28,16 @@ def get_profile_image(width, height)
   end
   profile_image.variant(resize_to_limit: [width, height]).processed
 end
-  
+
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+  # フォローを外すときの処理
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+  # フォローしているか判定
+  def following?(user)
+    followings.include?(user)
+  end
 end
