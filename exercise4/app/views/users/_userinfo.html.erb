@@ -3,9 +3,22 @@
     <%= image_tag user.get_profile_image(100,100) %>
     <p class="border-top">name　&emsp;&emsp;<%= user.name %></p>
     <p class="border-top">introduction　&emsp;&emsp;<%= user.introduction %></p>
-    <p class="border-top">follows &emsp;&emsp;<%= user.followings.count %></p>
-    <p class="border-top">followers &emsp;&emsp;<%= user.followers.count %></p>
 
+    <p class="border-top"> follows &emsp;&emsp;
+    <%= link_to user_followings_path(user) do %>
+    <%= user.followings.count %>
+    <%end%>
+    </p>
+
+    <p class="border-top"> followers &emsp;&emsp;
+    <%= link_to user_followers_path(user) do %>
+    <%= user.followers.count %>
+    <%end%>
+    </p>
+
+      <% if user != current_user %>
+      <td><%= render 'relationships/btn', user: user %></td>
+      <%end%>
 
   <% if user == current_user %>
     <%= link_to edit_user_path(user) do %>
